@@ -14,25 +14,85 @@ kv = '''
 <HubFeed>:
     orientation: 'tb-rl'
     FeedButton:
-        id: pool
-        text: 'Pool'
         on_release: root.change_image(pool.text)
+        StackLayout:
+            pos: self.parent.pos
+            size: self.parent.size
+            orientation: 'lr-tb'
+            padding: 10
+            Image:
+                id: pool_arrow
+                size_hint: 0.20, 1
+                source: 'images/arrow.png'
+                opacity: 0
+            Label:
+                id: pool
+                size_hint: 0.70, 1
+                text: 'Pool'
     FeedButton:
-        id: foosball
-        text: 'Foosball'
         on_release: root.change_image(foosball.text)
+        StackLayout:
+            pos: self.parent.pos
+            size: self.parent.size
+            orientation: 'lr-tb'
+            padding: 10
+            Image:
+                id: foosball_arrow
+                size_hint: 0.20, 1
+                source: 'images/arrow.png'
+                opacity: 0
+            Label:
+                id: foosball
+                size_hint: 0.70, 1
+                text: 'Foosball'
     FeedButton:
-        id: poker
-        text: 'Poker'
         on_release: root.change_image(poker.text)
+        StackLayout:
+            pos: self.parent.pos
+            size: self.parent.size
+            orientation: 'lr-tb'
+            padding: 10
+            Image:
+                id: poker_arrow
+                size_hint: 0.20, 1
+                source: 'images/arrow.png'
+                opacity: 0
+            Label:
+                id: poker
+                size_hint: 0.70, 1
+                text: 'Poker'
     FeedButton:
-        id: smash
-        text: 'Smash'
         on_release: root.change_image(smash.text)
+        StackLayout:
+            pos: self.parent.pos
+            size: self.parent.size
+            orientation: 'lr-tb'
+            padding: 10
+            Image:
+                id: smash_arrow
+                size_hint: 0.20, 1
+                source: 'images/arrow.png'
+                opacity: 0
+            Label:
+                id: smash
+                size_hint: 0.70, 1
+                text: 'Smash'
     FeedButton:
-        id: pingpong
-        text: 'Ping Pong'
         on_release: root.change_image(pingpong.text)
+        StackLayout:
+            pos: self.parent.pos
+            size: self.parent.size
+            orientation: 'lr-tb'
+            padding: 10
+            Image:
+                id: pingpong_arrow
+                size_hint: 0.20, 1
+                source: 'images/arrow.png'
+                opacity: 0
+            Label:
+                id: pingpong
+                size_hint: 0.70, 1
+                text: 'Ping Pong'
     Label:
         text: ''
         size_hint: 0.25, 0.4999999
@@ -44,13 +104,14 @@ kv = '''
                 size: self.size
     Image:
         id: currentEvent
+        size_hint: 0.75, 1
         canvas:
             Clear
             Color:
                 rgba: 1, 1, 1, 1
             Rectangle:
                 source: 'images/tournament-bracket.png'
-                size: 0.75*self.width, self.height
+                size: self.width, self.height
 '''
 Builder.load_string(kv)
 
@@ -66,16 +127,27 @@ class HubFeed(StackLayout):
             ClearColor(0, 0, 0, 0)
             ClearBuffers()
 
+        self.ids.pool_arrow.opacity = 0
+        self.ids.foosball_arrow.opacity = 0
+        self.ids.poker_arrow.opacity = 0
+        self.ids.smash_arrow.opacity = 0
+        self.ids.pingpong_arrow.opacity = 0
+
         if txt == 'Pool':
             self.rect.source = 'images/pool.jpg'
+            self.ids.pool_arrow.opacity = 1
         elif txt == 'Foosball':
             self.rect.source = 'images/foosball.jpg'
+            self.ids.foosball_arrow.opacity = 1
         elif txt == 'Poker':
             self.rect.source = 'images/poker.jpg'
+            self.ids.poker_arrow.opacity = 1
         elif txt == 'Smash':
             self.rect.source = 'images/smash.jpg'
+            self.ids.smash_arrow.opacity = 1
         elif txt == 'Ping Pong':
             self.rect.source = 'images/ping-pong.png'
+            self.ids.pingpong_arrow.opacity = 1
         else:
             self.rect.source = 'images/tournament-bracket.png'
     pass

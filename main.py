@@ -119,6 +119,8 @@ Builder.load_string(kv)
 class HubFeed(StackLayout):
     def change_image(self, txt):
         self.ids.currentEvent.canvas.clear()
+        self.ids.currentEvent.size_hint = (0.75, 1)
+
         with self.ids.currentEvent.canvas:
             self.fbo = Fbo(size=self.size)
             self.rect = Rectangle(source='', size=(0.75*self.width, self.height))

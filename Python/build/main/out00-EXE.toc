@@ -1,0 +1,9 @@
+('c:\\Users\\Trevor\\Documents\\UBC\\Year 3c\\EECE 418\\Git\\digital-lounge-hub\\build\\main\\main.exe',
+ False,
+ False,
+ None,
+ None,
+ [],
+ None,
+ False,
+ 1426448912L)
